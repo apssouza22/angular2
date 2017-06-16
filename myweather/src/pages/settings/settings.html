@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="main">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-100>
+          <ion-list>
+            <ion-item>
+              <ion-label fixed>
+                Default City
+              </ion-label>
+              <ion-input (keyup)="getQuery()" [(ngModel)]="searchStr" type="text" value=""></ion-input>
+            </ion-item>
+            <p class="current">Current: {{defaultLocation}}</p>
+            <button ion-button (click)="saveChanges()" block>Save Changes</button>
+          </ion-list>
+          <ion-list *ngIf="results">
+            <ion-item *ngFor="let result of results">
+              <span (click)="setDefaultLocation(result)">{{result.name}}</span>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>  
+    </ion-grid>
+</ion-content>
